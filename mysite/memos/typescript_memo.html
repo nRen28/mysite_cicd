@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>TypeScript(JavaScript)のメモ</title>
+<style>
+  pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+    
+    <h1>TypeScript(JavaScript)のメモ</h1>
+
+    <h2>JavaScriptのメモ</h2>
+
+    <h3>var と let と const</h3>
+
+    <h4>var</h4>
+    <p>varは再宣言できる。関数スコープでスコープ外からもアクセス可能。使用は極力避ける。</p>
+
+    <pre><code>
+var fruit = "apple";
+var fruit = "banana"; // 再宣言OK
+console.log(fruit); // banana
+
+function testVar() {
+    if (true) {
+        var x = 10;
+    }
+    console.log(x); // 10 (ifブロックの外からアクセス可能)
+}
+testVar();
+</code></pre>
+
+    <h4>let</h4>
+    <p>letは再宣言できない。ブロックスコープでスコープ外からアクセス不可能。</p>
+
+    <pre><code>
+let count = 10;
+// let count = 20; // エラー: 再宣言できない
+count = 20; // 再代入OK
+console.log(count); // 20
+
+function testLet() {
+    if (true) {
+        let y = 10;
+    }
+    // console.log(y); // エラー: ifブロックの外からはアクセスできない
+}
+testLet();
+</code></pre>
+
+    <h4>const</h4>
+    <p>constは再宣言も再代入もできない。再代入できないので繰り返し処理にも使えない。ブロックスコープでスコープ外からアクセス不可能。</p>
+
+    <pre><code>
+const MAX_VALUE = 100;
+// const MAX_VALUE = 200; // エラー: 再宣言できない
+// MAX_VALUE = 200; // エラー: 再代入できない
+console.log(MAX_VALUE); // 100
+
+const user = { name: "Alice" };
+user.name = "Bob"; // オブジェクトの中身は変更できる
+console.log(user); // { name: "Bob" }
+
+// user = { name: "Charlie" }; // エラー: オブジェクト自体の再代入はできない
+</code></pre>
+
+    <h2>TypeScriptのメモ</h2>
+
+    <h3>型定義</h3>
+    <p>TypeScriptでは型を指定することが可能。</p>   
+    <p>指定の仕方は<strong>変数名 +: 型名</strong></p>
+        <pre><code>
+//例
+let num : number = 1;
+        </code></pre>
+
+        <h4>基本的な型の種類</h4>
+<ul>
+  <li><strong>string</strong>：文字列（例: <code>"hello"</code>）</li>
+  <li><strong>number</strong>：数値（整数・小数どちらもOK）</li>
+  <li><strong>boolean</strong>：真偽値（<code>true</code> または <code>false</code>）</li>
+  <li><strong>bigint</strong>：非常に大きな整数（例: <code>123n</code>）</li>
+  <li><strong>null</strong>：値が存在しないことを明示</li>
+  <li><strong>undefined</strong>：値がまだ設定されていないことを示す</li>
+  <li><strong>symbol</strong>：一意な識別子を作る特殊な型（例: <code>Symbol("id")</code>）</li>
+</ul>
+
+        <a href="../index.html">メインページ</a>
+         
+</body>
+</html>
